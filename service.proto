@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package temperature_service;
+
+service TemperatureService {
+
+  rpc GetLatestTemperature (Empty) returns (TemperatureData);
+
+  rpc ListTemperatures (Empty) returns (TemperatureList);
+}
+
+message Empty {}
+
+message TemperatureData {
+  uint32 sensor_id = 1;
+  float average_temperature = 2;
+  string timestamp = 3;
+}
+
+message TemperatureList {
+  repeated TemperatureData data = 1;
+}
